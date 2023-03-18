@@ -1,35 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import axios from 'axios';
-import * as http from 'http';
+import { AxiosInstance } from 'axios';
+import { createAxios } from 'src/utils/request';
 
 @Injectable()
 export class AuthService {
-  axiosRef: any;
+  axiosRef: AxiosInstance;
 
   constructor() {
-    this.axiosRef = axios.create({
-      baseURL: 'https://jxfw.gdut.edu.cn',
-      timeout: 1000,
-      httpAgent: new http.Agent({ keepAlive: true }),
-      headers: {
-        Accept: 'text/plain, */*; q=0.01',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Accept-Language': 'zh-CN,zh;q=0.9',
-        'Sec-Fetch-Dest': 'document',
-        'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': 'none',
-        'Sec-Fetch-User': '?1',
-        'Upgrade-Insecure-Requests': '1',
-        'User-Agent':
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36',
-        'sec-ch-ua':
-          '"Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': 'Windows',
-        'X-Requested-With': 'XMLHttpRequest',
-        Referer: 'https://jxfw.gdut.edu.cn/login!welcome.action',
-      },
-    });
+    this.axiosRef = createAxios();
   }
 
   async initCookies(): Promise<string> {
@@ -61,18 +39,19 @@ export class AuthService {
           headers: {
             Cookie: cookies,
           },
-          withCredentials: true,
         })
       ).data,
     };
   }
 
   async verify(cookies): Promise<string> {
-    const response = await this.axiosRef.get(`/yzm?d=${Date.now()}`, {
+    const response = await this.axiosRef.get('/yzm', {
       headers: {
         Cookie: cookies,
       },
-      withCredentials: true,
+      params: {
+        d: Date.now(),
+      },
       responseType: 'arraybuffer',
     });
 
