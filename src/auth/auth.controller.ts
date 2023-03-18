@@ -20,9 +20,8 @@ export class AuthController {
     return await this.authService.initCookies();
   }
 
-  @Get('verify')
+  @Post('verify')
   async verify(@Body('cookies') cookies: string) {
-    console.log(cookies);
     return this.authService.verify(cookies);
   }
 }
