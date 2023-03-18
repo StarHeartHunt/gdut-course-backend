@@ -13,3 +13,15 @@ export interface Course {
   startTime: string; // 不规则的开始时间，长度必须为5，如"08:08"
   endTime: string; // 不规则的结束时间，长度必须为5，如"08:08"
 }
+
+export interface CourseRaw {
+  kcmc: string;
+  kcbh: string;
+  jxbmc: string;
+  kcrwdm: string;
+  jcdm2: string;
+  zcs: string;
+  xq: string;
+  jxcdmcs: string;
+  teaxms: string;
+}
