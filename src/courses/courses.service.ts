@@ -59,7 +59,6 @@ export class CoursesService {
         endTime: '',
       };
     });
-    console.log(courses);
 
     return courses;
   }
