@@ -44,7 +44,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract Docker metadata
+      - name: Extract Docker Metadata
         id: meta
         uses: docker/metadata-action@v4
         with:
@@ -58,7 +58,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=sha
 
-      - name: Build and push Docker image
+      - name: Build and Push Docker Image
         id: build-and-push
         uses: docker/build-push-action@v4
         with:
@@ -76,8 +76,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           short-description: ${{ github.event.repository.description }}
+          repository: starheart/${{ github.event.repository.name }}
 
-      - name: Sign the published Docker image
+      - name: Sign the Published Docker image
         if: ${{ github.event_name != 'pull_request' }}
         env:
           COSIGN_EXPERIMENTAL: "true"
