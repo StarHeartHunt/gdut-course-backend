@@ -114,7 +114,7 @@ jobs:
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          password: ${{ secrets.DEPLOY_PASSWORD }}
           envs: DEPLOY_PATH,VERSION
           script: |
             cd $DEPLOY_PATH
