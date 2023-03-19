@@ -12,7 +12,24 @@ export class CoursesService {
     this.axiosRef = createAxios();
   }
 
-  async findAll(cookies, semester): Promise<Array<Course>> {
+  async getTermStartWeek(
+    cookies: string,
+    semester: string,
+  ): Promise<Array<Record<string, string>>> {
+    const response = await this.axiosRef.get('/xsgrkbcx!getKbRq.action', {
+      params: {
+        xnxqdm: semester,
+        zc: 1,
+      },
+      headers: {
+        Cookie: cookies,
+      },
+    });
+
+    return response.data[1];
+  }
+
+  async findAll(cookies: string, semester: string): Promise<Array<Course>> {
     const htmlDoc = (
       await this.axiosRef.get('/xsgrkbcx!xsAllKbList.action', {
         params: {
