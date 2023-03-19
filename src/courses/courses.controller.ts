@@ -21,4 +21,13 @@ export class CoursesController {
   ): Promise<Array<Record<string, string>>> {
     return this.coursesService.getTermStartWeek(cookies, semester);
   }
+
+  @Post('weekSchedule')
+  async getTermWeekSchedule(
+    @Body('cookies') cookies: string,
+    @Body('semester') semester: string,
+    @Body('week') week: number,
+  ): Promise<any> {
+    return this.coursesService.getTermWeekSchedule(cookies, semester, week);
+  }
 }

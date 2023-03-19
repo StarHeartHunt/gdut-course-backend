@@ -29,6 +29,20 @@ export class CoursesService {
     return response.data[1];
   }
 
+  async getTermWeekSchedule(cookies: string, semester: string, week: number) {
+    const response = await this.axiosRef.get('/xsgrkbcx!getKbRq.action', {
+      params: {
+        xnxqdm: semester,
+        zc: week,
+      },
+      headers: {
+        Cookie: cookies,
+      },
+    });
+
+    return response.data;
+  }
+
   async findAll(cookies: string, semester: string): Promise<Array<Course>> {
     const htmlDoc = (
       await this.axiosRef.get('/xsgrkbcx!xsAllKbList.action', {
