@@ -118,7 +118,12 @@ jobs:
           envs: DEPLOY_PATH,VERSION
           script: |
             cd $DEPLOY_PATH
-            docker compose up
+            sudo -s
+            docker stop ${{ github.event.repository.name }}
+            docker rm ${{ github.event.repository.name }}
+            docker rmi starheart/${{ github.event.repository.name }}:main
+            docker pull starheart/${{ github.event.repository.name }}:main
+            docker run --name ${{ github.event.repository.name }} -p 3004:3000 -v $DEPLOY_PATH:/data -d starheart/${{ github.event.repository.name }}:main
 
       - name: Update Deployment Status
         uses: bobheadxi/deployments@v1
