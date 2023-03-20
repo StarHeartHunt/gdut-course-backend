@@ -1,4 +1,4 @@
-import { Body, Headers, Controller, Post } from '@nestjs/common';
+import { Body, Headers, Controller, Get } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { Course } from './interfaces/course.interface';
 
@@ -6,7 +6,7 @@ import { Course } from './interfaces/course.interface';
 export class CoursesController {
   constructor(private coursesService: CoursesService) {}
 
-  @Post()
+  @Get()
   async findAll(
     @Headers('X-Cookie') cookies: string,
     @Body('semester') semester: string,
@@ -14,7 +14,7 @@ export class CoursesController {
     return this.coursesService.findAll(cookies, semester);
   }
 
-  @Post('termStartWeek')
+  @Get('termStartWeek')
   async getTermStartWeek(
     @Headers('X-Cookie') cookies: string,
     @Body('semester') semester: string,
@@ -22,7 +22,7 @@ export class CoursesController {
     return this.coursesService.getTermStartWeek(cookies, semester);
   }
 
-  @Post('weekSchedule')
+  @Get('weekSchedule')
   async getTermWeekSchedule(
     @Headers('X-Cookie') cookies: string,
     @Body('semester') semester: string,
