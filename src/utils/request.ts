@@ -4,7 +4,7 @@ import * as http from 'http';
 export function createAxios() {
   return axios.create({
     baseURL: 'https://jxfw.gdut.edu.cn',
-    timeout: 2000,
+    timeout: 5000,
     httpAgent: new http.Agent({ keepAlive: true }),
     headers: {
       Accept: 'text/plain, */*; q=0.01',
