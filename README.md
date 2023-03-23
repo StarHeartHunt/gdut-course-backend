@@ -1,16 +1,16 @@
-# gdut-course-backend
+# GDUT Course
 
-## Description
+又一个课表小程序，但是开源。
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+本仓库为小程序 GDUT Course 的 **后端** 项目仓库。
 
-## Installation
+## 安装项目
 
 ```bash
 $ pnpm install
 ```
 
-## Running the app
+## 运行服务
 
 ```bash
 # development
@@ -23,7 +23,7 @@ $ pnpm run start:dev
 $ pnpm run start:prod
 ```
 
-## Test
+## 测试
 
 ```bash
 # unit tests
@@ -36,16 +36,6 @@ $ pnpm run test:e2e
 $ pnpm run test:cov
 ```
 
-## Support
+# 许可证
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+本仓库代码采用 Apache-2.0 license 许可证，见 [License](https://github.com/StarHeartHunt/gdut-course-backend/blob/main/LICENSE)
