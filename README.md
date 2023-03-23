@@ -36,6 +36,6 @@ $ pnpm run test:e2e
 $ pnpm run test:cov
 ```
 
-# 许可证
+## 许可证
 
 本仓库代码采用 Apache-2.0 license 许可证，见 [License](https://github.com/StarHeartHunt/gdut-course-backend/blob/main/LICENSE)
