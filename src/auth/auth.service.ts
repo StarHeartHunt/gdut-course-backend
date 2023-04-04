@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, StreamableFile } from '@nestjs/common';
 import { AxiosInstance } from 'axios';
+import { Readable } from 'stream';
 import { createAxios } from 'src/utils/request';
 
 @Injectable()
@@ -44,7 +45,7 @@ export class AuthService {
     };
   }
 
-  async verify(cookies): Promise<string> {
+  async verify(cookies: string) {
     const response = await this.axiosRef.get('/yzm', {
       headers: {
         Cookie: cookies,
@@ -55,9 +56,6 @@ export class AuthService {
       responseType: 'arraybuffer',
     });
 
-    return (
-      'data:image/png;base64,' +
-      Buffer.from(response.data, 'binary').toString('base64')
-    );
+    return new StreamableFile(Readable.from(response.data));
   }
 }
