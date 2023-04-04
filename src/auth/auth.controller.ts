@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Headers, Post } from '@nestjs/common';
+import { Body, Controller, Get, Headers, Post, Query } from '@nestjs/common';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
@@ -21,7 +21,7 @@ export class AuthController {
   }
 
   @Get('verify')
-  async verify(@Headers('X-Cookie') cookies: string) {
+  async verify(@Query('cookie') cookies: string) {
     return this.authService.verify(cookies);
   }
 }
